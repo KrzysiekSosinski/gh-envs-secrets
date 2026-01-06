@@ -11,7 +11,7 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.qm9mgfm.mongodb.net
-      MONGODB_USERNAME: ksosinskli1976
+      MONGODB_USERNAME: ksosinski1976
       MONGODB_PASSWORD: Kris76
       PORT: 8080
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT
+        run: npm start & npx wait-on http://127.0.0.1:8080
       - name: Run tests
         run: npm test
       - name: Output information
