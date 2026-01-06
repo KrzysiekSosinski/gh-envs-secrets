@@ -5,8 +5,8 @@ on:
     branches:
       - main
       - dev
-    env:
-      MONGODB_DB_NAME:
+env:
+  MONGODB_DB_NAME: gh-demo
 jobs:
   test:
     env:
