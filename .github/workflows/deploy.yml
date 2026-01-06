@@ -4,9 +4,15 @@ on:
     branches:
       - main
       - dev
+    env:
+      MONGODB_DB_NAME:
 jobs:
   test:
-    environment: testing
+    env:
+      MONGODB_CLUSTER_ADDRESS: cluster0.qm9mgfm.mongodb.net
+      MONGODB_USERNAME: ksosinskli1976
+      MONGODB_PASSWORD: Kris76
+      PORT: 8080
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -19,15 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "..."
+        run: echo ${{ env }}
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "..."
+          echo ${{ env }}
